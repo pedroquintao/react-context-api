@@ -1,9 +1,10 @@
-import React from "react";
 import Produto from "./Produto";
 import produtos from "@/mocks/produtos.json";
 import Titulo from "@/components/Titulo";
+import { useCarrinhoContext } from "../../hooks/useCarrinhoContext";
 
-const Produtos = ({ adicionarProduto }) => {
+const Produtos = () => {
+  const { adicionarProduto, removerProduto } = useCarrinhoContext()
   return (
     <section role="produtos" aria-label="Produtos que estão bombando!">
       <Titulo>Produtos que estão bombando!</Titulo>
@@ -13,6 +14,7 @@ const Produtos = ({ adicionarProduto }) => {
             key={produto.id}
             {...produto}
             adicionarProduto={adicionarProduto}
+            removerProduto={removerProduto}
           />
         ))}
       </div>
